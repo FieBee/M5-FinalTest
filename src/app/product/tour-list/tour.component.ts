@@ -9,14 +9,15 @@ import swal from "sweetalert";
   styleUrls: ['./tour.component.css']
 })
 export class TourComponent implements OnInit {
-tours: Tour[]=[]
+  tours: Tour[]=[]
 
   constructor(private tourService: TourService) {
-  this.getAll();
+    this.getAll();
   }
 
   ngOnInit(): void {
   }
+
   getAll(): Tour[]{
     this.tourService.getAllTour().subscribe(
       tours=>{
@@ -26,13 +27,10 @@ tours: Tour[]=[]
     return this.tours;
   }
   delete(id: any){
-
     swal({
       title: "Bạn chắc muốn xóa?",
-      // text: "Nếu xóa, bạn sẽ không thể khôi phục lại được",
       icon: "warning",
-      // @ts-ignore
-      buttons: true,
+      // buttons: true,
       dangerMode: true,
     })
       .then((willDelete) => {
